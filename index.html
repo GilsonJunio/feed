@@ -13,7 +13,60 @@
         }
     </style>
     <body>
-       <div>
+        <article>
+            <h1>2026-10-20</h1>
+            <p>So, recently i bought a HP Proliant Dl380 Gen 6 server
+                A pretty solid choice and at a cheap price. I paid 750,00 BRL (150 USD Approx.), installed Proxmox
+                and i'm running it as a lab. It's been a few days since it got delivered and since then i ran some
+                good software in it. From LLMs with Ollama, Wazuh and some game servers. It ran Minecraft, Killing Floor and GTA IV Servers really
+                great, no issues at all. But i had an idea, what about try to run llms fully on both cpus? I know, everyone already have done
+                this before, no news here. My point is: My laptop has an i5 13th gen, 32gb ddr5 ram and a RTX 3050, even so, when i tried running
+                local models, i wasn't fully satisfied, like, i used it for writing code, but quality of the code wasn't good enough. 
+                I did some research and the main reason for this is due to my GPU low VRAM, it has only 6gb VRAM. Then this idea came 
+                to my mind: why gpus power llms? it's due to their parallel processing, which makes it faster, 
+                this is why llms don't rely mainly on CPU, which requires RAM instead of VRAM. Now, think with me: 
+                if graphics card with high VRAM that deliver a good llm experience are horrendously expensive, what if i go full cpu-powered?
+                It's slower, BUT with more ram, i can allocate for memory for better context and better answers from models, after all, my server runs two CPUs,
+                yes, it's from a older server model, slower ram and older CPU, however, i'm willing to trade speed for better response (and cheaper hardware).
+
+                Information wise, my server is a HP Proliant Dl380 Gen 6, it has two Xeon 5606, 16gb DDR3 and two SATA Hard Drives.
+
+                I never had a server before and never touched one, so i instantly got attracted to it's shiny metal case, absolutely stunning. 
+                
+                And i managed to buy two of these
+            </p>
+        </article>
+
+        <article>
+            <h1>2026-10-06</h1>
+            <p>I've been quite pissed lately regarding all the issues with VSCodium and VSCode extensions. 
+                So i decided to try something: Installing VSCodium inside a container, and running a local git server 
+                for managing my website code files. I already did the first part: i ran 
+                <code> distrobox create 
+                    --name [container-name] 
+                    --image registry.fedoraproject.org/fedora:latest 
+                    --home [container-home-path]   
+                    --additional-flags "--security-opt label=disable" 
+                    --unshare-all 
+                </code>
+
+                Distrobox is a tool that allows running any Linux distro inside a container seamlessly integrated with my host,
+                in other words, i can run GUI software inside any container without going through the pain of manually installing 
+                graphical tools inside the container. 
+                <ul>
+                    <li><code>--name</code> Names the container</li>
+                    <li><code>--image</code> Pulls the image from the fedora repo</li>                    
+                    <li><code>--home</code> Sets the container home directory</li>
+                    <li><code>"--security-opt label=disable"</code> Disables SELinux for this container alone 
+                        (Honestly i'm not sure if this helps at all actually, maybe this option is dismissable) </li>
+                    <li><code>--unshare-all</code> Creates a more isolated container, where only the $HOME, basic sockets and host’s FS (in /run/host) is shared</li>
+                </ul>
+                <h2>2026-10-06</h2>
+                <p>Writing this from another day, i need to finish this distrobox setup, my original idea was to got VSCodium running inside a distrobox container, integrated to a local git server.</p>
+            </p>
+            <hr>
+        </article>
+       <article>
             <h1>2026-09-23</h1>
             <p>
                 It's been quite some time since my last entry, my bad. Job has taken so much time from me.
@@ -21,8 +74,8 @@
                 thing related to OpenBSD i've done lately was to create a chroot directory bounded to a ssh user
                 which becomes unable to use any commands upon authentication, very cool.                  
             </p>
-        </div>           
-        <div>
+        </article>           
+        <article>
             <h1>2026-07-13</h1>
             <p>
                 Today i have gone to a close Educational Institute from "Instituto Janela Para o Mundo"
@@ -32,9 +85,9 @@
                 next entry i'll be talking about it.
                   
             </p>
-        </div>      
+        </article>      
 
-        <div>
+        <article>
             <h1>2026-07-11</h1>
             <p>
                 Lately i've been quite interested on BSD systems.
@@ -47,12 +100,13 @@
                 i found about pledge, unveil, secure levels, W^X, KARL and many other interesting
                 features!
             </p>
-        </div>        
+        </article>        
 
-        <div>
+        <article>
             <h1>2026-07-10</h1>
             <p>Well, i guess this is the first of many of my notes</p>
-        </div>
+        </article>
         <hr>
+        <footer><span>CONTACT: feed@jissenkou.org</span></footer>
     </body>
 </html>
