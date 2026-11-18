@@ -14,6 +14,34 @@
     </style>
     <body>
         <article>
+            <h1>2026-10-26</h1>
+            <p>
+                I'm currently writing the toshoukan entry for Proxmox VE and it's amazing how Google Gemini
+                is lazy when writing commands. As i'm not very familiar with Proxmox, so i asked Gemini to generate
+                a command for me to create a container, it gave me this trash:
+                <code> create 200 local:vztmpl/fedora-44-cloud_amd64.tar.xz \
+                               -cores number_of_cores   \
+                               -memory amount_of_ram_in_mb   \
+                               -swap amount_of_ram_in_mb   \
+                               -ostype system_name   \
+                               -storage storage   \
+                               -rootfs volume=local-lvm:20   \
+                               -net0 name=eth0,bridge=vmbr0,firewall=1,ip=dhcp   \
+                               -password password   \
+                               -unprivileged 0   \
+                               -features nesting=1   \
+                               -start 1
+                </code>
+                Notice that he put the unprivileged and nesting flags. The nesting flag is okay, it enables virtualization
+                inside the LXC container, the problem is the other one, unprivileged. Unprivileged=1 (Default) enables the kernel host to
+                creates an userspace of 16 bits (0-65536) mapping table and reserves it to the container, this way,
+                the container UIDs and GIDs are mapped to host's 100000-165536 UIDs and GIDs. That makes the container's
+                users and groups regular ones, unprivileged. However, when  Unprivileged=0, all UIDs and GIDs are mapped one to one to the host's kernel.
+                this way, the container's root and the host's root are the same. You can already see the problem that's coming.
+
+            </p>
+        </article>
+        <article>
             <h1>2026-10-20</h1>
             <p>So, recently i bought a HP Proliant Dl380 Gen 6 server
                 A pretty solid choice and at a cheap price. I paid 750,00 BRL (150 USD Approx.), installed Proxmox
@@ -61,7 +89,7 @@
                         (Honestly i'm not sure if this helps at all actually, maybe this option is dismissable) </li>
                     <li><code>--unshare-all</code> Creates a more isolated container, where only the $HOME, basic sockets and host’s FS (in /run/host) is shared</li>
                 </ul>
-                <h2>2026-10-06</h2>
+                <h2>2026-10-20</h2>
                 <p>Writing this from another day, i need to finish this distrobox setup, my original idea was to got VSCodium running inside a distrobox container, integrated to a local git server.</p>
             </p>
             <hr>
